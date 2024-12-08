@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MaterialsInBundle
   m_EditorClassIdentifier: 
   Materials:
+  - {fileID: 2100000, guid: 278e0e1579376ed4d8f150adbe1e0ca4, type: 2}
   - {fileID: 2100000, guid: e45857c671118a849b0c07871fe70d2c, type: 2}
+  - {fileID: 2100000, guid: fa70005ba510a2247b1c50aa9f2a1e83, type: 2}
   - {fileID: 2100000, guid: 8114e7b8752dbb14887f38bdd011712e, type: 2}
   - {fileID: 2100000, guid: 23e75ef8f9c46cc498888963e234cbca, type: 2}
   - {fileID: 2100000, guid: 6e188413c8bc1314aab69334fef85c7a, type: 2}
