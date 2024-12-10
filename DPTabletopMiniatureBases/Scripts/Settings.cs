@@ -1,15 +1,9 @@
 using HarmonyLib;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Localization;
-using Kingmaker.Modding;
-using Kingmaker.PubSubSystem;
-using Kingmaker.UI;
 using Kingmaker.UI.Models.SettingsUI.SettingAssets.Dropdowns;
-using ModMenu.NewTypes;
 using ModMenu.Settings;
 using Owlcat.Runtime.Core.Logging;
-using System.Text;
-using KeyBinding = ModMenu.Settings.KeyBinding;
 using UnityEngine;
 
 namespace DPTabletopMiniatureBases
@@ -17,7 +11,7 @@ namespace DPTabletopMiniatureBases
     public static class Settings
     {
         internal static LogChannel Logger = ReplaceInventoryBase.Logger;
-        private static bool Initialized = false;
+        public static bool Initialized = false;
         private static readonly string RootKey = "dptabletopminaturebases";
         public static readonly string DropdownKey = "dropdown";
         private static readonly LocalizedString DPModName = new() { Key = "DPTabletopMiniatureBases_ModName" };
@@ -25,7 +19,6 @@ namespace DPTabletopMiniatureBases
         private static readonly LocalizedString HeaderA = new() { Key = "DPTabletopMiniatureBases_HeaderA" };
         private static readonly LocalizedString DropdownDesc = new() { Key = "DPTabletopMiniatureBases_DropdownDesc" };
         private static readonly LocalizedString DropdownDescLong = new() { Key = "DPTabletopMiniatureBases_DropdownDescLong" };
-        //private static readonly SettingsBuilder settings = SettingsBuilder.New(RootKey, DPModName);
         private enum BaseTypeEnum
         {
             DP_40K_Base_Aquila,
@@ -86,6 +79,7 @@ namespace DPTabletopMiniatureBases
         }
     }
 
+    [HarmonyPriority(Priority.First)]
     [HarmonyPatch(typeof(BlueprintsCache))]
     static class BlueprintsCache_Postfix
     {
@@ -95,7 +89,7 @@ namespace DPTabletopMiniatureBases
 #if DEBUG
             ReplaceInventoryBase.Logger.Log("Running ModMenu settings Harmony patch.");
 #endif
-            Settings.Init();
+                Settings.Init();
         }
     }
 }
