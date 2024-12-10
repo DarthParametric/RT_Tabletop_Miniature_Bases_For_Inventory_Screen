@@ -1,0 +1,19 @@
+{
+	"strings": {
+		"DPTabletopMiniatureBases_ModName": {
+			"Text": "Tabletop Miniature Bases For Inventory Screen"
+		},
+		"DPTabletopMiniatureBases_ModDesc": {
+			"Text": "Replaces the flat holographic disc in the inventory and character creation screens with a classic tabletop-style miniature base."
+		},
+		"DPTabletopMiniatureBases_HeaderA": {
+			"Text": "Miniature Base Style"
+		},
+		"DPTabletopMiniatureBases_DropdownDesc": {
+			"Text": "Select the base type:"
+		},
+		"DPTabletopMiniatureBases_DropdownDescLong": {
+			"Text": "Choose your preferred style of base. Note that the same base is shared between all characters."
+		}
+	}
+}

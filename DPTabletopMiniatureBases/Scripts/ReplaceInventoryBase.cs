@@ -1,11 +1,13 @@
 using HarmonyLib;
 using Kingmaker.Blueprints;
+using Kingmaker.Localization;
 using Kingmaker.Modding;
 using Kingmaker.UI.DollRoom;
 using Owlcat.Runtime.Core.Logging;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace DPTabletopMiniatureBases
 {
@@ -13,7 +15,8 @@ namespace DPTabletopMiniatureBases
 	public static class ReplaceInventoryBase
 	{
 		internal static LogChannel Logger;
-		internal static string DPBaseName;
+        internal static OwlcatModification DPMod;
+		internal static string DPBaseName = Settings.GetBaseType();
 		internal static string DPBaseAssetID;
 
 		internal static Dictionary<string, string> Base_IDs_Dict = new()
@@ -30,9 +33,10 @@ namespace DPTabletopMiniatureBases
 		[OwlcatModificationEnterPoint]
 		public static void EnterPoint(OwlcatModification modification)
 		{
-			Logger = modification.Logger;
+			DPMod = modification;
+            Logger = DPMod.Logger;
 
-			Harmony harmony = new(modification.Manifest.UniqueName);
+			Harmony harmony = new(DPMod.Manifest.UniqueName);
 			harmony.PatchAll();
 		}
 
@@ -57,7 +61,7 @@ namespace DPTabletopMiniatureBases
 
 					if (CharacterStand != null)
 					{
-						DPBaseName = "DP_40K_Base_Aquila"; // TEMP UNTIL OPTIONS MENU IMPLEMENTED
+						//DPBaseName = "DP_40K_Base_Aquila"; // TEMP UNTIL OPTIONS MENU IMPLEMENTED
 						string BaseClone = DPBaseName + "(Clone)";
 #if DEBUG
 						Logger.Log($"Found valid {CharacterStand.name}, deactivating");
