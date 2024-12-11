@@ -9,11 +9,47 @@
 		"DPTabletopMiniatureBases_HeaderA": {
 			"Text": "Miniature Base Style"
 		},
+		"DPTabletopMiniatureBases_HeaderB": {
+			"Text": "Optional Settings"
+		},
 		"DPTabletopMiniatureBases_DropdownDesc": {
 			"Text": "Select the base type:"
 		},
 		"DPTabletopMiniatureBases_DropdownDescLong": {
 			"Text": "Choose your preferred style of base. Note that the same base is shared between all characters."
+		},
+		"DPTabletopMiniatureBases_DropdownList1": {
+			"Text": "Black base with Aquila"
+		},
+		"DPTabletopMiniatureBases_DropdownList2": {
+			"Text": "Checker plate-topped base"
+		},
+		"DPTabletopMiniatureBases_DropdownList3": {
+			"Text": "Classic flocked base"
+		},
+		"DPTabletopMiniatureBases_DropdownList4": {
+			"Text": "Metal plates-topped base"
+		},
+		"DPTabletopMiniatureBases_DropdownList5": {
+			"Text": "Plain black base (default)"
+		},
+		"DPTabletopMiniatureBases_DropdownList6": {
+			"Text": "Cracked ceramic tiles-topped base"
+		},
+		"DPTabletopMiniatureBases_DropdownList7": {
+			"Text": "Terracotta tiles-topped base"
+		},
+		"DPTabletopMiniatureBases_ToggleADesc": {
+			"Text": "Disable Post-Process Effects"
+		},
+		"DPTabletopMiniatureBases_ToggleADescLong": {
+			"Text": "Disables the scanline VFX, distortion, and servoskull. Also disables the background.\n\nN.B.: These are all tied together in a single object, so unfortunately they can only be toggled on or off together, not individually."
+		},
+		"DPTabletopMiniatureBases_ToggleBDesc": {
+			"Text": "Disable XYZ"
+		},
+		"DPTabletopMiniatureBases_ToggleBDescLong": {
+			"Text": "Disables the XYZ thing that I can't quite remember at the moment."
 		}
 	}
 }

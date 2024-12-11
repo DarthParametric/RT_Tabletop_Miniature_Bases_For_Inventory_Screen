@@ -18,15 +18,15 @@ namespace DPTabletopMiniatureBases
 		internal static string DPBaseAssetID;
 
 		internal static Dictionary<string, string> Base_IDs_Dict = new()
-	{
-        {"DP_40K_Base_Aquila", "9e4d3b7f727f0a74d9dac32e44ae7433"},
-        {"DP_40K_Base_Diamondplate", "92fcf2fba6fdc8046832d2594668eefb"},
-		{"DP_40K_Base_Flocked", "6d5beadf7f9522c48af97df396e52adf"},
-		{"DP_40K_Base_Metal_Plate", "2ae8f87a8aed9ae43bab6bde3203561b"},
-		{"DP_40K_Base_Plain_Black", "e17d069f0721bea40b864d68fb5e7070"},
-		{"DP_40K_Base_Tiles_Cracked", "9c1cbcee6b84ffb4196f4864c24075b3"},
-		{"DP_40K_Base_Tiles_Terracotta", "56deacec01d0be74fb65ce05b1352298"},
-	};
+	    {
+            {"DP_40K_Base_Aquila", "9e4d3b7f727f0a74d9dac32e44ae7433"},
+            {"DP_40K_Base_Diamondplate", "92fcf2fba6fdc8046832d2594668eefb"},
+		    {"DP_40K_Base_Flocked", "6d5beadf7f9522c48af97df396e52adf"},
+		    {"DP_40K_Base_Metal_Plate", "2ae8f87a8aed9ae43bab6bde3203561b"},
+		    {"DP_40K_Base_Plain_Black", "e17d069f0721bea40b864d68fb5e7070"},
+		    {"DP_40K_Base_Tiles_Cracked", "9c1cbcee6b84ffb4196f4864c24075b3"},
+		    {"DP_40K_Base_Tiles_Terracotta", "56deacec01d0be74fb65ce05b1352298"},
+	    };
 
 		[OwlcatModificationEnterPoint]
 		public static void EnterPoint(OwlcatModification modification)
@@ -62,6 +62,9 @@ namespace DPTabletopMiniatureBases
                         if (Settings.Initialized)
                         {
                             DPBaseName = Settings.GetBaseType();
+#if DEBUG
+                            Logger.Log($"Applying CharacterStand from ModMenu setting, value is {DPBaseName}");
+#endif
                         }
                         else 
                         {
@@ -74,8 +77,8 @@ namespace DPTabletopMiniatureBases
 #endif
 						CharacterStand.gameObject.SetActive(false);
 
-						// Account for the user changing the base type from the options menu mid-session.
-						foreach (Transform child in TargetPlaceholder)
+                        // ACCOUNT FOR A PRE-EXISTING BASE AND/OR THE USER CHANGING THE BASE TYPE FROM THE OPTIONS MENU MID-SESSION.
+                        foreach (Transform child in TargetPlaceholder)
 						{
 #if DEBUG
 							Logger.Log($"Found child of {TargetPlaceholder.name} - {child.name}");
@@ -130,10 +133,13 @@ namespace DPTabletopMiniatureBases
 									Logger.Log($"Found valid {InvPostProcess.name}");
 									Logger.Log($"Found valid {CharGenPostProcess.name}");
 #endif
-									// TO-DO. CHECK SETTINGS FOR ENABLED OPTION.
-									// DEACTIVATES POST-PROCESS OBJECT - DISABLES SCANLINE VFX, DISTORTION, AND SERVOSKULL.
-									//InvPostProcess.gameObject.SetActive(false);
-									//CharGenPostProcess.gameObject.SetActive(false);
+
+                                    if (Settings.Initialized && Settings.IsPostProcessEnabled())
+                                    {
+                                        // DEACTIVATES POST-PROCESS OBJECT - DISABLES SCANLINE VFX, DISTORTION, AND SERVOSKULL.
+                                        InvPostProcess.gameObject.SetActive(false);
+                                        CharGenPostProcess.gameObject.SetActive(false);
+                                    }
 								}
 							}
 							catch (Exception e)
