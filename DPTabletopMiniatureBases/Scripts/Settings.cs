@@ -5,7 +5,6 @@ using Kingmaker.UI.Models.SettingsUI.SettingAssets.Dropdowns;
 using ModMenu.Settings;
 using MMSettings = ModMenu.Settings;
 using Owlcat.Runtime.Core.Logging;
-using System;
 using UnityEngine;
 
 namespace DPTabletopMiniatureBases
@@ -54,9 +53,7 @@ namespace DPTabletopMiniatureBases
         {
             if (Initialized)
             {
-#if DEBUG
-                Logger.Log("ModMenu settings already initialised");
-#endif
+                ReplaceInventoryBase.LogDebug("ModMenu settings already initialised");
                 return;
             }
 
@@ -127,9 +124,8 @@ namespace DPTabletopMiniatureBases
         public static string GetBaseType()
         {
             var SelectedBase = ModMenu.ModMenu.GetSettingValue<BaseTypeEnum>(GetKey(DropdownKey)).ToString();
-#if DEBUG
-            Logger.Log($"ModMenu selected dropdown value is {SelectedBase}");
-#endif
+            ReplaceInventoryBase.LogDebug($"ModMenu selected dropdown value is {SelectedBase}");
+
             return SelectedBase;
         }
     }
@@ -141,10 +137,8 @@ namespace DPTabletopMiniatureBases
         [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
         static void Postfix()
         {
-#if DEBUG
-            ReplaceInventoryBase.Logger.Log("Running ModMenu settings Harmony patch.");
-#endif
-                Settings.Init();
+			ReplaceInventoryBase.LogDebug("Running ModMenu settings Harmony patch.");
+			Settings.Init();
         }
     }
 }
