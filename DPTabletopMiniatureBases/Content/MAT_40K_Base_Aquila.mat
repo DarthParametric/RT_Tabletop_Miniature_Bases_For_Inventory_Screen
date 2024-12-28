@@ -108,7 +108,7 @@ Material:
     - _GroundColorPower: 1
     - _IndirectIstancing: 0
     - _LightmapEmissionFlags: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _OccludedObjectClip: 0
     - _OccludedObjectHighlighting: 0
     - _OccluderObjectOpacity: 1
@@ -118,7 +118,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimLighting: 0
     - _RimPower: 1
-    - _Roughness: 1
+    - _Roughness: 0.5
     - _SpecialPostprocessFlag: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
