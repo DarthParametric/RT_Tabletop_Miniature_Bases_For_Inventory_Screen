@@ -160,11 +160,11 @@ namespace DPTabletopMiniatureBases
 			}
         }
         
-		[HarmonyPatch(typeof(CharacterDollRoom), "CreateAvatar")]
+		[HarmonyPatch(typeof(CharacterDollRoom), "SetupUnit")]
 		[HarmonyPostfix]
-		static void Dollroom_CreateAvatar_Postfix(CharacterDollRoom __instance)
+		static void Dollroom_Postfix(CharacterDollRoom __instance)
         {
-            LogDebug("CharacterDollRoom loaded, running patch");
+			LogDebug("Dollroom_Postfix patch started");
             
             try
             {
@@ -178,22 +178,33 @@ namespace DPTabletopMiniatureBases
 				
                 if (TargetPlaceholder != null)
                 {
-					LogDebug($"Found valid {TargetPlaceholder.name}, checking for DollRoomCharacterStand");
-                    
+					LogDebug("------------------------------------------------------------------------");
+					
 					BaseDiameter = 10;
 					
 					foreach (Transform child in TargetPlaceholder)
 					{
 						var name = child.name;
 
-							if (name.Contains("Spacemarine") || name.Contains("UrolonDarkApostle") || name.Contains("CyberMastiff"))
-							{
-								LogDebug($"Found large base target, doll is {name}.");
-								BaseDiameter = 15;
-							}
+						if (name == "ServoskullLookTarget" || name == "DollRoomCharacterStand" || name.Contains("40K_Base_")) continue;
+						
+						if (name.Contains("Spacemarine") || name.Contains("UrolonDarkApostle") || name.Contains("CyberMastiff"))
+						{
+							BaseDiameter = 15;
+							LogDebug($"Found large base target {name}, setting base diameter to {BaseDiameter}.");
+						}
+						else
+						{
+							BaseDiameter = 10;
+							LogDebug($"Found regular base target {name}, setting base diameter to {BaseDiameter}.");
+						}
 					}
 					
+					LogDebug("------------------------------------------------------------------------");
+					
 					LogDebug($"Base diameter is set to {BaseDiameter}mm");
+					
+					LogDebug($"Found valid {TargetPlaceholder.name}, checking for DollRoomCharacterStand");
 					
 					Transform CharacterStand = TargetPlaceholder.Find("DollRoomCharacterStand");
 
@@ -283,6 +294,8 @@ namespace DPTabletopMiniatureBases
 								CharGenPostProcess.gameObject.SetActive(true);
 							}
 						}
+						
+						LogDebug("===========================================================================");
                     }
                     else
                     {
@@ -307,6 +320,6 @@ namespace DPTabletopMiniatureBases
         public bool ReplaceActive = true;
 		public bool DetailedLogging = false;
         public bool PostProcessDisabled = false;
-        public int SelectedBaseType = 0;
+        public int SelectedBaseType = 1;
     }
 }
