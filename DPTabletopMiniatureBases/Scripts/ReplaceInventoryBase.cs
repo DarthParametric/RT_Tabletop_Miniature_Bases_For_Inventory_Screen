@@ -28,7 +28,16 @@ namespace DPTabletopMiniatureBases
 
         public static bool IsEnabled;
         public static Settings settings;
-        public static string[] BaseTypes = { "Plain Black", "Flocked", "Metal Tiles", "Diamondplate", "Terracotta Tiles", "Wood", "Stone"};
+        public static string[] BaseTypes =
+		{
+			"Glossy Black",
+			"Pseudo Flock",
+			"Metal Tiles",
+			"Diamondplate",
+			"Ceramic Tiles",
+			"Stylised Wood",
+			"Stylised Stone"
+		};
 
         internal static Dictionary<string, string> Base_IDs_10mm_Dict = new()
         {
@@ -84,9 +93,11 @@ namespace DPTabletopMiniatureBases
 
                 GUILayout.Space(15);
 				
+				var stylecentered = new GUIStyle(GUI.skin.toggle) { alignment = TextAnchor.MiddleCenter };
+
 				GUILayout.Label("<b>Choose Base Type:</b>", GUILayout.ExpandWidth(false));
-                GUILayout.BeginHorizontal();
-                settings.SelectedBaseType = GUILayout.SelectionGrid(settings.SelectedBaseType, BaseTypes, 8, "toggle", GUILayout.ExpandWidth(true));
+				GUILayout.BeginHorizontal();
+				settings.SelectedBaseType = GUILayout.SelectionGrid(settings.SelectedBaseType, BaseTypes, 8, stylecentered);
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
