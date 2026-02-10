@@ -168,7 +168,7 @@ namespace DPTabletopMiniatureBases
             
             try
             {
-                LogDebug("Checking for CharacterPlaceholder");
+                //LogDebug("Checking for CharacterPlaceholder");
                 Transform TargetPlaceholder = (AccessTools.Field(typeof(CharacterDollRoom), "m_TargetPlaceholder").GetValue(__instance) as Transform);
 				Transform DollRoomRoot = TargetPlaceholder.transform.parent.transform;
 				Transform DollRoomLightRoot = DollRoomRoot.Find("DollRoomLightSetup");
@@ -204,7 +204,7 @@ namespace DPTabletopMiniatureBases
 					
 					LogDebug($"Base diameter is set to {BaseDiameter}mm");
 					
-					LogDebug($"Found valid {TargetPlaceholder.name}, checking for DollRoomCharacterStand");
+					//LogDebug($"Found valid {TargetPlaceholder.name}, checking for DollRoomCharacterStand");
 					
 					Transform CharacterStand = TargetPlaceholder.Find("DollRoomCharacterStand");
 
@@ -213,12 +213,15 @@ namespace DPTabletopMiniatureBases
                         if (settings.ReplaceActive)
                         {
                             DPBaseName = GetBaseNameFromIndex(settings.SelectedBaseType, BaseDiameter);
-                            LogDebug($"Base swapping setting is active, switching to base {DPBaseName}");
+                            LogDebug($"Base swapping setting is active, using base {DPBaseName}");
 							
 							string BaseClone = DPBaseName + "(Clone)";
 							
-							LogDebug($"Found valid {CharacterStand.name}, deactivating");
-							CharacterStand.gameObject.SetActive(false);
+							if (CharacterStand.gameObject.activeSelf)
+							{
+								LogDebug($"Found active {CharacterStand.name}, deactivating");
+								CharacterStand.gameObject.SetActive(false);
+							}
 							
 							// ACCOUNT FOR A PRE-EXISTING BASE, CHARACTER SIZE, OR THE USER CHANGING THE BASE TYPE FROM THE OPTIONS MENU MID-SESSION.
 							foreach (Transform child in TargetPlaceholder)
@@ -244,12 +247,12 @@ namespace DPTabletopMiniatureBases
 								LogDebug($"Instantiating {BasePrefab.name} as child of {TargetPlaceholder.name}");
 								UnityEngine.Object.Instantiate(BasePrefab, TargetPlaceholder);
 								
-								LogDebug($"Adjusting local position of {BasePrefab.name} {BasePrefab.transform.localPosition} to {CharacterStand.transform.localPosition}");
+								//LogDebug($"Adjusting local position of {BasePrefab.name} {BasePrefab.transform.localPosition} to {CharacterStand.transform.localPosition}");
 								BasePrefab.transform.localPosition = CharacterStand.transform.localPosition;
 								
-								if (UpskirtLight != null)
+								if (UpskirtLight != null && UpskirtLight.gameObject.activeSelf)
 								{
-									LogDebug($"Found valid {UpskirtLight.name}, deactivating");
+									LogDebug($"Found active {UpskirtLight.name}, deactivating");
 									UpskirtLight.gameObject.SetActive(false);
 								}
 							}
@@ -260,7 +263,7 @@ namespace DPTabletopMiniatureBases
                         }
                         else
                         {
-                            LogDebug($"Swapping base set to disabled, reverting to vanilla base");
+                            LogDebug($"Swapping bases set to disabled, reverting to vanilla character stand");
 							
 							foreach (Transform child in TargetPlaceholder)
 							{
@@ -276,22 +279,28 @@ namespace DPTabletopMiniatureBases
 						
 						if (InvPostProcess != null && CharGenPostProcess != null)
 						{
-							LogDebug($"Found valid {InvPostProcess.name}");
-							LogDebug($"Found valid {CharGenPostProcess.name}");
+							//LogDebug($"Found valid {InvPostProcess.name}");
+							//LogDebug($"Found valid {CharGenPostProcess.name}");
 							
 							if (settings.PostProcessDisabled)
 							{
-								// DEACTIVATES POST-PROCESS OBJECT - DISABLES SCANLINE VFX, DISTORTION, AND SERVOSKULL.
-								InvPostProcess.gameObject.SetActive(false);
-								CharGenPostProcess.gameObject.SetActive(false);
-								LogDebug($"Disable Post-Process setting set to {settings.PostProcessDisabled}, disabling post-process objects.");
+								if (InvPostProcess.gameObject.activeSelf || CharGenPostProcess.gameObject.activeSelf)
+								{
+									// DEACTIVATES POST-PROCESS OBJECT - DISABLES SCANLINE VFX, DISTORTION, AND SERVOSKULL.
+									InvPostProcess.gameObject.SetActive(false);
+									CharGenPostProcess.gameObject.SetActive(false);
+									LogDebug($"Disable Post-Process setting is {settings.PostProcessDisabled}, disabling active post-process objects.");
+								}
 							}
 							else
 							{
-								// SET POST-PROCESS TO ACTIVE IN CASE THEY WERE PREVIOUSLY DEACTIVATED.
-								LogDebug($"Disable Post-Process setting set to {settings.PostProcessDisabled}, enabling.");
-								InvPostProcess.gameObject.SetActive(true);
-								CharGenPostProcess.gameObject.SetActive(true);
+								if (!InvPostProcess.gameObject.activeSelf || !CharGenPostProcess.gameObject.activeSelf)
+								{
+									// SET POST-PROCESS TO ACTIVE IN CASE THEY WERE PREVIOUSLY DEACTIVATED.
+									LogDebug($"Disable Post-Process setting is {settings.PostProcessDisabled}, enabling inactive post-process objects.");
+									InvPostProcess.gameObject.SetActive(true);
+									CharGenPostProcess.gameObject.SetActive(true);
+								}
 							}
 						}
 						
