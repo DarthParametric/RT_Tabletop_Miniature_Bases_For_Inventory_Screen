@@ -2,12 +2,12 @@
 A mod for Owlcat's Rogue Trader cRPG. Replaces the flat holographic disc in the inventory and character creation screens with a classic tabletop-style miniature base.
 
 ## Overview
-This mod adds a selection of tabletop-style miniature bases that replace the holographic disc that characters stand on in the inventory and character creation screens. Several different variants are provided, selectable via the mod manager. Additionally, you can also optionally disable the green scanline VFX and floating servoskull in these screens.
+This mod adds a selection of tabletop-style miniature bases that replace the holographic disc that characters stand on in the inventory and character creation screens. Several different variants are provided, selectable via the mod manager. You can also optionally disable the green scanline VFX and floating servoskull in these screens.
 
 ## Installation
-This is an Owlmod, made using the Unity template supplied by Owlcat. Currently the game has a bug that prevents Owlmods from working. To fix this, you ***must*** install the Unity Mod Manager-based mod [MicroPatches](https://github.com/microsoftenator2022/MicroPatches/releases) by microsoftenator2022. You can install it manually or via [ModFinder](https://www.nexusmods.com/warhammer40kroguetrader/mods/146).
+This is an Owlmod, made using the Unity template supplied by Owlcat. In order to properly load custom assets, you ***must*** install the Unity Mod Manager-based mod [MicroPatches](https://github.com/microsoftenator2022/MicroPatches/releases) by microsoftenator2022. You can install it manually or via [ModFinder RT](https://www.nexusmods.com/warhammer40kroguetrader/mods/146).
 
-Use [ModFinder](https://www.nexusmods.com/warhammer40kroguetrader/mods/146) to install the mod automagically.
+Use [ModFinder RT](https://www.nexusmods.com/warhammer40kroguetrader/mods/146) to install this mod automagically.
 
 Alternatively, to install the mod manually, first make sure you have run the game at least once. Download the archive and extract it into:
 
@@ -37,7 +37,7 @@ If you have other mods, list them in quotes separated by commas. For example:
 You can move individual mods from the ActiveModifications section to the DisabledModifications section if you want to disable them without physically removing them.
 
 ## User Settings
-You can configure the mod's settings via the Owlcat Mod Menu (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Here you can enable or disable base swapping, choose the type of base you want to use, and whether you want to disable the post-process effects such as the green scanlines, the distortion effect, and the floating servoskull in the background. Once you have changed the settings to your desired values, hit the Apply button at the bottom to save them. 
+You can configure the mod's settings via the Owlcat Mod Manager (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Here you can enable or disable base swapping, choose the type of base you want to use, and whether you want to disable the post-process effects such as the green scanlines, the distortion effect, and the floating servoskull in the background. Once you have changed the settings to your desired values, hit the Apply button at the bottom to save them. 
 
 Your settings will be saved in a `DPTabletopMiniatureBases_Data.json` file in the Modifications folder. The settings apply universally across all saves.
 
@@ -45,4 +45,4 @@ Your settings will be saved in a `DPTabletopMiniatureBases_Data.json` file in th
 Choosing the option to disable post-process effects will also disable the background image, leaving your character in a black void. This is unavoidable as they are all linked together in a single post-process object.
 
 ## Acknowledgements
-Many thanks to the modders on the Owlcat Dicord, but particularly microsoftenator2022, Kurufinve, and ADDB for helping to coach me through my ineptitude in order to get the mod working.
+Many thanks to the modders on the Owlcat Discord, but particularly microsoftenator2022, Kurufinve, and ADDB for helping to coach me through my ineptitude in order to get the mod working.
