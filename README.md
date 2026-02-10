@@ -7,9 +7,12 @@ This mod adds a selection of tabletop-style miniature bases that replace the hol
 ## Installation
 This is an Owlmod, made using the Unity template supplied by Owlcat. Currently the game has a bug that prevents Owlmods from working. To fix this, you ***must*** install the Unity Mod Manager-based mod [MicroPatches](https://github.com/microsoftenator2022/MicroPatches/releases) by microsoftenator2022. You can install it manually or via [ModFinder](https://www.nexusmods.com/warhammer40kroguetrader/mods/146).
 
-To install this mod, first make sure you have run the game at least once. Download the archive and extract it into:
+Use [ModFinder](https://www.nexusmods.com/warhammer40kroguetrader/mods/146) to install the mod automagically.
 
-%LocalAppData%Low\Owlcat Games\Warhammer 40000 Rogue Trader\Modifications\
+Alternatively, to install the mod manually, first make sure you have run the game at least once. Download the archive and extract it into:
+
+`%userprofile%\AppData\LocalLow\Owlcat Games\Warhammer 40000 Rogue Trader\Modifications\`
+
 Each Owlmod needs to be in its own sub-folder in the Modifications folder.
 
 Afterwards, you need to edit OwlcatModificationManagerSettings.json in the base Warhammer 40000 Rogue Trader folder in a text editor (Notepad++ recommended). It should look something like this:
@@ -33,12 +36,13 @@ If you have other mods, list them in quotes separated by commas. For example:
 
 You can move individual mods from the ActiveModifications section to the DisabledModifications section if you want to disable them without physically removing them.
 
-Alternatively, use [ModFinder](https://www.nexusmods.com/warhammer40kroguetrader/mods/146) to install the mod.
+## User Settings
+You can configure the mod's settings via the Owlcat Mod Menu (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Here you can enable or disable base swapping, choose the type of base you want to use, and whether you want to disable the post-process effects such as the green scanlines, the distortion effect, and the floating servoskull in the background. Once you have changed the settings to your desired values, hit the Apply button at the bottom to save them. 
 
-It should be fine to install the mod in an existing game at any point right up to completing Argenta's quest in chapter 4 (or after if you're willing to use Toybox to manually spawn the helmets).
+Your settings will be saved in a `DPTabletopMiniatureBases_Data.json` file in the Modifications folder. The settings apply universally across all saves.
 
 ## Known Issues
-Choosing the option to disable the scanline VFX and servoskull will also disable the background image, leaving your character in a black void. This is unavoidable as they are all linked together in a single post-processing object.
+Choosing the option to disable post-process effects will also disable the background image, leaving your character in a black void. This is unavoidable as they are all linked together in a single post-process object.
 
 ## Acknowledgements
-Many thanks to the modders on the Owlcat Dicord, but particularly microsoftenator2022 and Kurufinve, for helping to coach me through my ineptitude in order to get the mod working.
+Many thanks to the modders on the Owlcat Dicord, but particularly microsoftenator2022, Kurufinve, and ADDB for helping to coach me through my ineptitude in order to get the mod working.
