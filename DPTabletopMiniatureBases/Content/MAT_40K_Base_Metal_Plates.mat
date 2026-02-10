@@ -124,7 +124,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimLighting: 0
     - _RimPower: 1
-    - _Roughness: 0.5
+    - _Roughness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecialPostprocessFlag: 0
     - _SpecularHighlights: 1

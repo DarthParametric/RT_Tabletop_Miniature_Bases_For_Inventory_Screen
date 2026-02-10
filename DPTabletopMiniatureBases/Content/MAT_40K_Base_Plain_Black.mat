@@ -18,7 +18,7 @@ Material:
   - PBD_NONE
   - _RECEIVEDECALS_ON
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
@@ -124,7 +124,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimLighting: 0
     - _RimPower: 1
-    - _Roughness: 0.5
+    - _Roughness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecialPostprocessFlag: 0
     - _SpecularHighlights: 1
@@ -157,8 +157,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 1}
     - _VaFrequencies: {r: 1.975, g: 0.793, b: 0.375, a: 0.193}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

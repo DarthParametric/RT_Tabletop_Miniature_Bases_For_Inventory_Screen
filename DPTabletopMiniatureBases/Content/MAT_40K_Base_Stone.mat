@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_40K_Base_Tiles_Cracked
+  m_Name: MAT_40K_Base_Stone
   m_Shader: {fileID: 4800000, guid: 222b820ce1ddd0649b7c8cfcf101ee4f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -34,11 +34,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 55d1c5d02069533458c34859a94f3a16, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab5e8f9fbb27ca548b7dcc1bbfb91570, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 34f61875422829f40a378a8bc84d8acc, type: 3}
+        m_Texture: {fileID: 2800000, guid: c900c31280ef5214e9430b899ee3a77a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveMap:
@@ -54,11 +54,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 55d1c5d02069533458c34859a94f3a16, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab5e8f9fbb27ca548b7dcc1bbfb91570, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MasksMap:
-        m_Texture: {fileID: 2800000, guid: 795305beddbfde74aa59013191f46b99, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1bd9977dd22c1ca4aae086a7d76ece00, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PosVatMap:
@@ -79,7 +79,7 @@ Material:
     - _Alphatest: 0
     - _BaseColorBlending: 0
     - _Blend: 0
-    - _BumpScale: 1
+    - _BumpScale: 3
     - _CullMode: 2
     - _Cutoff: 0.5
     - _Dissolve: 0
@@ -104,28 +104,21 @@ Material:
     - _EmissionColorScaleMeta: 1
     - _EmissionMapUsage: 0
     - _EnvironmentReflections: 1
-    - _GlossMapScale: 1
-    - _Glossiness: 0
-    - _GlossyReflections: 1
     - _GpuSkinning: 0
     - _GroundColorPower: 1
     - _IndirectIstancing: 0
     - _LightmapEmissionFlags: 0
     - _Metallic: 1
-    - _Mode: 3
     - _OccludedObjectClip: 0
     - _OccludedObjectHighlighting: 0
     - _OccluderObjectOpacity: 1
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
     - _PbdMode: 0
     - _QueueOffset: 0
     - _ReceiveDecals: 1
     - _ReceiveShadows: 1
     - _RimLighting: 0
     - _RimPower: 1
-    - _Roughness: 0.5
-    - _SmoothnessTextureChannel: 0
+    - _Roughness: 1
     - _SpecialPostprocessFlag: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -133,7 +126,6 @@ Material:
     - _Surface: 0
     - _Thickness: 1
     - _Translucent: 0
-    - _UVSec: 0
     - _UseGroundColor: 0
     - _VaEdgeFlutter: 0
     - _VaPrimaryFactor: 0
@@ -162,3 +154,4 @@ Material:
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 1}
     - _VaFrequencies: {r: 1.975, g: 0.793, b: 0.375, a: 0.193}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

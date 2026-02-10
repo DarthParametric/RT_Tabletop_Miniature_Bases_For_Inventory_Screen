@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_40K_Base_Diamondplate
+  m_Name: MAT_40K_Base_Wood_Stylised
   m_Shader: {fileID: 4800000, guid: 222b820ce1ddd0649b7c8cfcf101ee4f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -17,7 +17,7 @@ Material:
   m_InvalidKeywords:
   - PBD_NONE
   - _RECEIVEDECALS_ON
-  m_LightmapFlags: 1
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -34,11 +34,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 9f79ed074e7c95f49b2488b4899dcbe8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 185cd9a881a0c40449d98b9bc2c1465a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: b3de02f4dff287d44b430b3bbd282517, type: 3}
+        m_Texture: {fileID: 2800000, guid: b9aac2fd982c4a6458eab78650bac188, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveMap:
@@ -54,11 +54,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9f79ed074e7c95f49b2488b4899dcbe8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 185cd9a881a0c40449d98b9bc2c1465a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MasksMap:
-        m_Texture: {fileID: 2800000, guid: 2617ea1b4b010bc49b1d4ce4e0508e58, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1464ff0c76f1c334cb6a022a17b10a43, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PosVatMap:
@@ -79,7 +79,7 @@ Material:
     - _Alphatest: 0
     - _BaseColorBlending: 0
     - _Blend: 0
-    - _BumpScale: 2
+    - _BumpScale: 3
     - _CullMode: 2
     - _Cutoff: 0.5
     - _Dissolve: 0
@@ -104,20 +104,14 @@ Material:
     - _EmissionColorScaleMeta: 1
     - _EmissionMapUsage: 0
     - _EnvironmentReflections: 1
-    - _GlossMapScale: 1
-    - _Glossiness: 0
-    - _GlossyReflections: 1
     - _GpuSkinning: 0
     - _GroundColorPower: 1
     - _IndirectIstancing: 0
     - _LightmapEmissionFlags: 0
     - _Metallic: 1
-    - _Mode: 3
     - _OccludedObjectClip: 0
     - _OccludedObjectHighlighting: 0
     - _OccluderObjectOpacity: 1
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
     - _PbdMode: 0
     - _QueueOffset: 0
     - _ReceiveDecals: 1
@@ -125,7 +119,6 @@ Material:
     - _RimLighting: 0
     - _RimPower: 1
     - _Roughness: 1
-    - _SmoothnessTextureChannel: 0
     - _SpecialPostprocessFlag: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -133,7 +126,6 @@ Material:
     - _Surface: 0
     - _Thickness: 1
     - _Translucent: 0
-    - _UVSec: 0
     - _UseGroundColor: 0
     - _VaEdgeFlutter: 0
     - _VaPrimaryFactor: 0
