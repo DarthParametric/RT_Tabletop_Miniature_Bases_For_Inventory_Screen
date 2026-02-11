@@ -96,8 +96,6 @@ namespace DPTabletopMiniatureBases
 				
 				var stylecentered = new GUIStyle(GUI.skin.toggle) { alignment = TextAnchor.MiddleCenter };
 				stylecentered.onNormal.textColor = Color.green;
-				//var uncolored = BaseTypes[settings.SelectedBaseType];
-				//BaseTypes[settings.SelectedBaseType] = String.Format("<color=green>{0}</color>", uncolored);
 
 				GUILayout.Label("<b>Choose Base Type:</b>", GUILayout.ExpandWidth(false));
 				GUILayout.BeginHorizontal();
