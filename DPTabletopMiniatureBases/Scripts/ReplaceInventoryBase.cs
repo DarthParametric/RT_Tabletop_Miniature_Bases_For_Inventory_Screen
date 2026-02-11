@@ -28,12 +28,13 @@ namespace DPTabletopMiniatureBases
 
         public static bool IsEnabled;
         public static Settings settings;
-        public static string[] BaseTypes =
+        
+		public static string[] BaseTypes =
 		{
 			"Glossy Black",
 			"Pseudo Flock",
-			"Metal Tiles",
 			"Diamondplate",
+			"Metal Tiles",
 			"Ceramic Tiles",
 			"Stylised Wood",
 			"Stylised Stone"
@@ -43,8 +44,8 @@ namespace DPTabletopMiniatureBases
         {
             {"40K_Base_10mm_Plain_Black", "ae2607d5dd153da41836a7ce320c108f"},
             {"40K_Base_10mm_Flocked", "310af23644f85dc4690c4ee9ab4090e2"},
-            {"40K_Base_10mm_Metal_Plates", "6a597f10375ec1f40b38ea0b82dd9637"},
             {"40K_Base_10mm_Diamondplate", "dd88be47170d4634f98a5341a3cc53cf"},
+            {"40K_Base_10mm_Metal_Plates", "6a597f10375ec1f40b38ea0b82dd9637"},
 			{"40K_Base_10mm_Tiles_Terracotta", "7a70cde171e96b544ad183961db7e831"},
 			{"40K_Base_10mm_Wood_Stylised", "f1a892ae5cc86c9418a7e22290a0db8a"},
 			{"40K_Base_10mm_Stone", "7239881edcb232047a8f9b316c65b60b"},
@@ -54,8 +55,8 @@ namespace DPTabletopMiniatureBases
         {
             {"40K_Base_15mm_Plain_Black", "e063c2efe849fa5409af7357b3a11a10"},
             {"40K_Base_15mm_Flocked", "19bc94527a32917488bd898e60e2bd28"},
-            {"40K_Base_15mm_Metal_Plates", "9ebd46ad8bfc4ae499fd73cf35f514f6"},
             {"40K_Base_15mm_Diamondplate", "6bfb345fbd9541046a199d7bf7537ca9"},
+            {"40K_Base_15mm_Metal_Plates", "9ebd46ad8bfc4ae499fd73cf35f514f6"},
 			{"40K_Base_15mm_Tiles_Terracotta", "94ed7d461c4a4bc4ab83f2fbac1861ff"},
 			{"40K_Base_15mm_Wood_Stylised", "f450222d72d9fc746b34510c2af2e4bb"},
 			{"40K_Base_15mm_Stone", "1da9897d335be4b45b108064be853bea"},
@@ -94,6 +95,9 @@ namespace DPTabletopMiniatureBases
                 GUILayout.Space(15);
 				
 				var stylecentered = new GUIStyle(GUI.skin.toggle) { alignment = TextAnchor.MiddleCenter };
+				stylecentered.onNormal.textColor = Color.green;
+				//var uncolored = BaseTypes[settings.SelectedBaseType];
+				//BaseTypes[settings.SelectedBaseType] = String.Format("<color=green>{0}</color>", uncolored);
 
 				GUILayout.Label("<b>Choose Base Type:</b>", GUILayout.ExpandWidth(false));
 				GUILayout.BeginHorizontal();
