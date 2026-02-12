@@ -1,17 +1,11 @@
 using HarmonyLib;
-using Kingmaker;
 using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Localization;
+using Kingmaker.Code.UI.DollRoom;
 using Kingmaker.Modding;
-using Kingmaker.Settings;
-using Kingmaker.UI.Models.SettingsUI;
 using Kingmaker.UI.DollRoom;
-using Newtonsoft.Json;
 using Owlcat.Runtime.Core.Logging;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -31,6 +25,7 @@ namespace DPTabletopMiniatureBases
         
 		public static string[] BaseTypes =
 		{
+			"No Base",
 			"Glossy Black",
 			"Pseudo Flock",
 			"Diamondplate",
@@ -42,7 +37,8 @@ namespace DPTabletopMiniatureBases
 
         internal static Dictionary<string, string> Base_IDs_10mm_Dict = new()
         {
-            {"40K_Base_10mm_Plain_Black", "ae2607d5dd153da41836a7ce320c108f"},
+            {"40K_Base_Empty", "e9b4572e044a41d4a9c7792471f4839c"},
+			{"40K_Base_10mm_Plain_Black", "ae2607d5dd153da41836a7ce320c108f"},
             {"40K_Base_10mm_Flocked", "310af23644f85dc4690c4ee9ab4090e2"},
             {"40K_Base_10mm_Diamondplate", "dd88be47170d4634f98a5341a3cc53cf"},
             {"40K_Base_10mm_Metal_Plates", "6a597f10375ec1f40b38ea0b82dd9637"},
@@ -53,7 +49,8 @@ namespace DPTabletopMiniatureBases
 		
         internal static Dictionary<string, string> Base_IDs_15mm_Dict = new()
         {
-            {"40K_Base_15mm_Plain_Black", "e063c2efe849fa5409af7357b3a11a10"},
+            {"40K_Base_Empty", "e9b4572e044a41d4a9c7792471f4839c"},
+			{"40K_Base_15mm_Plain_Black", "e063c2efe849fa5409af7357b3a11a10"},
             {"40K_Base_15mm_Flocked", "19bc94527a32917488bd898e60e2bd28"},
             {"40K_Base_15mm_Diamondplate", "6bfb345fbd9541046a199d7bf7537ca9"},
             {"40K_Base_15mm_Metal_Plates", "9ebd46ad8bfc4ae499fd73cf35f514f6"},
@@ -87,19 +84,25 @@ namespace DPTabletopMiniatureBases
         {
             try
             {
-                GUILayout.Label("<b>Enable Character Base Swapping:</b>", GUILayout.ExpandWidth(false));
+                var styleleft = new GUIStyle(GUI.skin.toggle) { alignment = TextAnchor.MiddleLeft };
+                styleleft.onNormal.textColor = Color.green;
+                styleleft.hover.textColor = Color.yellow;
+
+                var stylecentered = new GUIStyle(GUI.skin.toggle) { alignment = TextAnchor.MiddleCenter };
+                stylecentered.onNormal.textColor = Color.green;
+                stylecentered.hover.textColor = Color.yellow;
+				
+				GUILayout.Label("<b>Enable Character Base Swapping:</b>", GUILayout.ExpandWidth(false));
                 GUILayout.BeginHorizontal();
-                settings.ReplaceActive = GUILayout.Toggle(settings.ReplaceActive, "Replace Bases");
+                settings.ReplaceActive = GUILayout.Toggle(settings.ReplaceActive, "Replace Bases", styleleft);
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
-				
-				var stylecentered = new GUIStyle(GUI.skin.toggle) { alignment = TextAnchor.MiddleCenter };
-				stylecentered.onNormal.textColor = Color.green;
+
 
 				GUILayout.Label("<b>Choose Base Type:</b>", GUILayout.ExpandWidth(false));
 				GUILayout.BeginHorizontal();
-				settings.SelectedBaseType = GUILayout.SelectionGrid(settings.SelectedBaseType, BaseTypes, 8, stylecentered);
+				settings.SelectedBaseType = GUILayout.SelectionGrid(settings.SelectedBaseType, BaseTypes, 8, stylecentered, GUILayout.ExpandWidth(false));
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
@@ -107,7 +110,7 @@ namespace DPTabletopMiniatureBases
                 GUILayout.Label("<b>Disable Dollroom Post-Process Effects:</b>", GUILayout.ExpandWidth(false));
                 GUILayout.Label("(Removes scanlines, distortion, servoskull, and background image)", GUILayout.ExpandWidth(false));
                 GUILayout.BeginHorizontal();
-                settings.PostProcessDisabled = GUILayout.Toggle(settings.PostProcessDisabled, "Disable Post-Process");
+                settings.PostProcessDisabled = GUILayout.Toggle(settings.PostProcessDisabled, "Disable Post-Process", styleleft);
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
@@ -172,54 +175,108 @@ namespace DPTabletopMiniatureBases
 				return Base10;
 			}
         }
-        
-		[HarmonyPatch(typeof(CharacterDollRoom), "SetupUnit")]
-		[HarmonyPostfix]
-		static void Dollroom_Postfix(CharacterDollRoom __instance)
+
+        [HarmonyPatch(typeof(CharGenDollRoom), "UpdateDoll")]
+        [HarmonyPostfix]
+        static void Dollroom_CharGenDollRoom_Postfix(CharGenDollRoom __instance)
         {
-			LogDebug("Dollroom_Postfix patch started");
-            
             try
             {
-                //LogDebug("Checking for CharacterPlaceholder");
+                LogDebug("Firing chargen patch.");
+
                 Transform TargetPlaceholder = (AccessTools.Field(typeof(CharacterDollRoom), "m_TargetPlaceholder").GetValue(__instance) as Transform);
-				Transform DollRoomRoot = TargetPlaceholder.transform.parent.transform;
-				Transform DollRoomLightRoot = DollRoomRoot.Find("DollRoomLightSetup");
-				Transform UpskirtLight = DollRoomLightRoot.Find("DollRoomLight_SpotUnderCharacterHolo");
-				Transform InvPostProcess = DollRoomLightRoot.Find("DollRoom_PostProcessSettings");
-				Transform CharGenPostProcess = DollRoomLightRoot.Find("DollRoomCharGen_PostProcessSettings");
-				
+                Transform DollRoomRoot = TargetPlaceholder.transform.parent.transform;
+                Transform DollRoomLightRoot = DollRoomRoot.Find("DollRoomLightSetup");
+                Transform UpskirtLight = DollRoomLightRoot.Find("DollRoomLight_SpotUnderCharacterHolo");
+                Transform InvPostProcess = DollRoomLightRoot.Find("DollRoom_PostProcessSettings");
+                Transform CharGenPostProcess = DollRoomLightRoot.Find("DollRoomCharGen_PostProcessSettings");
+
                 if (TargetPlaceholder != null)
                 {
-					LogDebug("------------------------------------------------------------------------");
-					
-					BaseDiameter = 10;
-					
-					foreach (Transform child in TargetPlaceholder)
-					{
-						var name = child.name;
+                    LogDebug($"Found TargetPlaceholder");
 
-						if (name == "ServoskullLookTarget" || name == "DollRoomCharacterStand" || name.Contains("40K_Base_")) continue;
-						
-						if (name.Contains("Spacemarine") || name.Contains("UrolonDarkApostle") || name.Contains("CyberMastiff"))
-						{
-							BaseDiameter = 15;
-							LogDebug($"Found large base target {name}, setting base diameter to {BaseDiameter}.");
-						}
-						else
-						{
-							BaseDiameter = 10;
-							LogDebug($"Found regular base target {name}, setting base diameter to {BaseDiameter}.");
-						}
-					}
-					
-					LogDebug("------------------------------------------------------------------------");
-					
-					LogDebug($"Base diameter is set to {BaseDiameter}mm");
-					
-					//LogDebug($"Found valid {TargetPlaceholder.name}, checking for DollRoomCharacterStand");
-					
-					Transform CharacterStand = TargetPlaceholder.Find("DollRoomCharacterStand");
+                    Patch_CharacterStand(TargetPlaceholder, DollRoomLightRoot, UpskirtLight, InvPostProcess, CharGenPostProcess);
+                }
+                else
+                {
+                    LogDebug("CharacterPlaceholder not found!");
+                }
+
+                LogDebug("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Caught an exception in Dollroom_CharGenDollRoom_Postfix: \n{ex}");
+            }
+        }
+
+        [HarmonyPatch(typeof(CharacterDollRoom), "SetupUnit")]
+        [HarmonyPostfix]
+        static void Dollroom_Postfix(CharacterDollRoom __instance)
+        {
+            try
+            {
+                LogDebug("Firing inventory patch.");
+
+                Transform TargetPlaceholder = (AccessTools.Field(typeof(CharacterDollRoom), "m_TargetPlaceholder").GetValue(__instance) as Transform);
+                Transform DollRoomRoot = TargetPlaceholder.transform.parent.transform;
+                Transform DollRoomLightRoot = DollRoomRoot.Find("DollRoomLightSetup");
+                Transform UpskirtLight = DollRoomLightRoot.Find("DollRoomLight_SpotUnderCharacterHolo");
+                Transform InvPostProcess = DollRoomLightRoot.Find("DollRoom_PostProcessSettings");
+                Transform CharGenPostProcess = DollRoomLightRoot.Find("DollRoomCharGen_PostProcessSettings");
+
+                if (TargetPlaceholder != null)
+                {
+                    LogDebug($"Found TargetPlaceholder");
+
+                    Patch_CharacterStand(TargetPlaceholder, DollRoomLightRoot, UpskirtLight, InvPostProcess, CharGenPostProcess);
+                }
+                else
+                {
+                    LogDebug("CharacterPlaceholder not found!");
+                }
+
+                LogDebug("************************************************************************");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Caught an exception in Dollroom_Postfix: \n{ex}");
+            }
+        }
+
+        internal static void Patch_CharacterStand(Transform TargetPlaceholder, Transform DollRoomLightRoot, Transform UpskirtLight, Transform InvPostProcess, Transform CharGenPostProcess)
+        {
+            try
+            {
+                if (TargetPlaceholder != null)
+                {
+					BaseDiameter = 10;
+
+                    foreach (Transform child in TargetPlaceholder)
+                    {
+                        var name = child.name;
+
+                        if (name == "ServoskullLookTarget" || name == "DollRoomCharacterStand" || name.Contains("40K_Base_")) continue;
+
+                        if (name.Contains("Spacemarine") || name.Contains("UrolonDarkApostle") || name.Contains("CyberMastiff"))
+                        {
+                            BaseDiameter = 15;
+                            LogDebug($"Found large base target {name}, setting base diameter to {BaseDiameter}.");
+                        }
+                        else
+                        {
+                            BaseDiameter = 10;
+                            LogDebug($"Found regular base target {name}, setting base diameter to {BaseDiameter}.");
+                        }
+                    }
+
+                    LogDebug("------------------------------------------------------------------------");
+
+                    LogDebug($"Base diameter is set to {BaseDiameter}mm");
+
+                    //LogDebug($"Found valid {TargetPlaceholder.name}, checking for DollRoomCharacterStand");
+
+                    Transform CharacterStand = TargetPlaceholder.Find("DollRoomCharacterStand");
 
                     if (CharacterStand != null)
                     {
@@ -227,97 +284,95 @@ namespace DPTabletopMiniatureBases
                         {
                             DPBaseName = GetBaseNameFromIndex(settings.SelectedBaseType, BaseDiameter);
                             LogDebug($"Base swapping setting is active, using base {DPBaseName}");
-							
-							string BaseClone = DPBaseName + "(Clone)";
-							
-							if (CharacterStand.gameObject.activeSelf)
-							{
-								LogDebug($"Found active {CharacterStand.name}, deactivating");
-								CharacterStand.gameObject.SetActive(false);
-							}
-							
-							// ACCOUNT FOR A PRE-EXISTING BASE, CHARACTER SIZE, OR THE USER CHANGING THE BASE TYPE FROM THE OPTIONS MENU MID-SESSION.
-							foreach (Transform child in TargetPlaceholder)
-							{
-								//LogDebug($"Found child of {TargetPlaceholder.name} - {child.name}");
-								
-								if (child.name.Contains("40K_Base_") && child.name != BaseClone)
-								{
-									LogDebug($"Found existing base of different type ({child.name.Remove(child.name.Length - 7)}) from setting ({DPBaseName}), destroying");
-									GameObject.Destroy(child.gameObject);
-								}
-							}
-							
-							Transform NewBase = TargetPlaceholder.Find(BaseClone);
-							
-							if (NewBase == null)
-							{
-								DPBaseAssetID = GetBaseAssetIDFromIndex(settings.SelectedBaseType, BaseDiameter);
-								LogDebug($"Loading {DPBaseName} ({DPBaseAssetID}) from bundle");
-								
-								var BasePrefab = ResourcesLibrary.TryGetResource<GameObject>(DPBaseAssetID, false, true);
-								
-								LogDebug($"Instantiating {BasePrefab.name} as child of {TargetPlaceholder.name}");
-								UnityEngine.Object.Instantiate(BasePrefab, TargetPlaceholder);
-								
-								//LogDebug($"Adjusting local position of {BasePrefab.name} {BasePrefab.transform.localPosition} to {CharacterStand.transform.localPosition}");
-								BasePrefab.transform.localPosition = CharacterStand.transform.localPosition;
-								
-								if (UpskirtLight != null && UpskirtLight.gameObject.activeSelf)
-								{
-									LogDebug($"Found active {UpskirtLight.name}, deactivating");
-									UpskirtLight.gameObject.SetActive(false);
-								}
-							}
-							else
-							{
-								LogDebug($"{NewBase.name.Remove(NewBase.name.Length - 7)} already instantiated, skipping");
-							}
+
+                            string BaseClone = DPBaseName + "(Clone)";
+
+                            if (CharacterStand.gameObject.activeSelf)
+                            {
+                                LogDebug($"Found active {CharacterStand.name}, deactivating");
+                                CharacterStand.gameObject.SetActive(false);
+                            }
+
+                            // ACCOUNT FOR A PRE-EXISTING BASE, CHARACTER SIZE, OR THE USER CHANGING THE BASE TYPE FROM THE OPTIONS MENU MID-SESSION.
+                            foreach (Transform child in TargetPlaceholder)
+                            {
+                                //LogDebug($"Found child of {TargetPlaceholder.name} - {child.name}");
+
+                                if (child.name.Contains("40K_Base_") && child.name != BaseClone)
+                                {
+                                    LogDebug($"Found existing base of different type ({child.name.Remove(child.name.Length - 7)}) from setting ({DPBaseName}), destroying");
+                                    GameObject.Destroy(child.gameObject);
+                                }
+                            }
+
+                            Transform NewBase = TargetPlaceholder.Find(BaseClone);
+
+                            if (NewBase == null)
+                            {
+                                DPBaseAssetID = GetBaseAssetIDFromIndex(settings.SelectedBaseType, BaseDiameter);
+                                LogDebug($"Loading {DPBaseName} ({DPBaseAssetID}) from bundle");
+
+                                var BasePrefab = ResourcesLibrary.TryGetResource<GameObject>(DPBaseAssetID, false, true);
+
+                                LogDebug($"Instantiating {BasePrefab.name} as child of {TargetPlaceholder.name}");
+                                UnityEngine.Object.Instantiate(BasePrefab, TargetPlaceholder);
+
+                                //LogDebug($"Adjusting local position of {BasePrefab.name} {BasePrefab.transform.localPosition} to {CharacterStand.transform.localPosition}");
+                                BasePrefab.transform.localPosition = CharacterStand.transform.localPosition;
+
+                                if (UpskirtLight != null && UpskirtLight.gameObject.activeSelf)
+                                {
+                                    LogDebug($"Found active {UpskirtLight.name}, deactivating");
+                                    UpskirtLight.gameObject.SetActive(false);
+                                }
+                            }
+                            else
+                            {
+                                LogDebug($"{NewBase.name.Remove(NewBase.name.Length - 7)} already instantiated, skipping");
+                            }
                         }
                         else
                         {
                             LogDebug($"Swapping bases set to disabled, reverting to vanilla character stand");
-							
-							foreach (Transform child in TargetPlaceholder)
-							{
-								if (child.name.Contains("40K_Base_"))
-								{
-									GameObject.Destroy(child.gameObject);
-								}
-							}
-							
-							CharacterStand.gameObject.SetActive(true);
-							UpskirtLight.gameObject.SetActive(true);
+
+                            foreach (Transform child in TargetPlaceholder)
+                            {
+                                if (child.name.Contains("40K_Base_"))
+                                {
+                                    GameObject.Destroy(child.gameObject);
+                                }
+                            }
+
+                            CharacterStand.gameObject.SetActive(true);
+                            UpskirtLight.gameObject.SetActive(true);
                         }
-						
-						if (InvPostProcess != null && CharGenPostProcess != null)
-						{
-							//LogDebug($"Found valid {InvPostProcess.name}");
-							//LogDebug($"Found valid {CharGenPostProcess.name}");
-							
-							if (settings.PostProcessDisabled)
-							{
-								if (InvPostProcess.gameObject.activeSelf || CharGenPostProcess.gameObject.activeSelf)
-								{
-									// DEACTIVATES POST-PROCESS OBJECT - DISABLES SCANLINE VFX, DISTORTION, AND SERVOSKULL.
-									InvPostProcess.gameObject.SetActive(false);
-									CharGenPostProcess.gameObject.SetActive(false);
-									LogDebug($"Disable Post-Process setting is {settings.PostProcessDisabled}, disabling active post-process objects.");
-								}
-							}
-							else
-							{
-								if (!InvPostProcess.gameObject.activeSelf || !CharGenPostProcess.gameObject.activeSelf)
-								{
-									// SET POST-PROCESS TO ACTIVE IN CASE THEY WERE PREVIOUSLY DEACTIVATED.
-									LogDebug($"Disable Post-Process setting is {settings.PostProcessDisabled}, enabling inactive post-process objects.");
-									InvPostProcess.gameObject.SetActive(true);
-									CharGenPostProcess.gameObject.SetActive(true);
-								}
-							}
-						}
-						
-						LogDebug("===========================================================================");
+
+                        if (InvPostProcess != null && CharGenPostProcess != null)
+                        {
+                            //LogDebug($"Found valid {InvPostProcess.name}");
+                            //LogDebug($"Found valid {CharGenPostProcess.name}");
+
+                            if (settings.PostProcessDisabled)
+                            {
+                                if (InvPostProcess.gameObject.activeSelf || CharGenPostProcess.gameObject.activeSelf)
+                                {
+                                    // DEACTIVATES POST-PROCESS OBJECT - DISABLES SCANLINE VFX, DISTORTION, AND SERVOSKULL.
+                                    InvPostProcess.gameObject.SetActive(false);
+                                    CharGenPostProcess.gameObject.SetActive(false);
+                                    LogDebug($"Disable Post-Process setting is {settings.PostProcessDisabled}, disabling active post-process objects.");
+                                }
+                            }
+                            else
+                            {
+                                if (!InvPostProcess.gameObject.activeSelf || !CharGenPostProcess.gameObject.activeSelf)
+                                {
+                                    // SET POST-PROCESS TO ACTIVE IN CASE THEY WERE PREVIOUSLY DEACTIVATED.
+                                    LogDebug($"Disable Post-Process setting is {settings.PostProcessDisabled}, enabling inactive post-process objects.");
+                                    InvPostProcess.gameObject.SetActive(true);
+                                    CharGenPostProcess.gameObject.SetActive(true);
+                                }
+                            }
+                        }
                     }
                     else
                     {
@@ -331,7 +386,7 @@ namespace DPTabletopMiniatureBases
             }
             catch (Exception ex)
             {
-                Logger.Log($"Caught an exception in DollRoom_Postfix:\n{ex}");
+                Logger.Log($"Caught exception in Patch_CharacterStand: \n{ex}");
             }
         }
     }
@@ -342,6 +397,6 @@ namespace DPTabletopMiniatureBases
         public bool ReplaceActive = true;
 		public bool DetailedLogging = false;
         public bool PostProcessDisabled = false;
-        public int SelectedBaseType = 1;
+        public int SelectedBaseType = 2;
     }
 }
