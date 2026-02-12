@@ -1,4 +1,4 @@
-# Tabletop Miniature Bases For Inventory Screen
+# Tabletop Miniature Bases
 A mod for Owlcat's Rogue Trader cRPG. Replaces the flat holographic disc in the inventory and character creation screens with a classic tabletop-style miniature base.
 
 ## Overview
@@ -9,7 +9,7 @@ This is an Owlmod, made using the Unity template supplied by Owlcat. In order to
 
 Use [ModFinder RT](https://www.nexusmods.com/warhammer40kroguetrader/mods/146) to install this mod automagically.
 
-Alternatively, to install the mod manually, first make sure you have run the game at least once. Download the archive and extract it into:
+Alternatively, to install the mod manually, first make sure you have run the game at least once. Download the mod from the [releases section](https://github.com/DarthParametric/RT_Tabletop_Miniature_Bases_For_Inventory_Screen/releases/latest) or [Nexus](https://www.nexusmods.com/warhammer40kroguetrader/mods/406) and extract it into:
 
 `%userprofile%\AppData\LocalLow\Owlcat Games\Warhammer 40000 Rogue Trader\Modifications\`
 
@@ -43,6 +43,10 @@ Your settings will be saved in a `DPTabletopMiniatureBases_Data.json` file in th
 
 ## Known Issues
 Choosing the option to disable post-process effects will also disable the background image, leaving your character in a black void. This is unavoidable as they are all linked together in a single post-process object.
+
+The reflection probe in the scene does not capture dynamic objects (and trying to enable the option didn't work), so the character won't show up in any reflections on the glossy surfaces of the base. This is particularly apparent on the plain black base. The top surface looks kind of weird because of that.
+
+Larger characters, such as Ulfar and Glaito, automatically switch to using a larger diameter base. On rare occasions, equipping a weapon may cause the base to switch to the smaller one. I _think_ I have prevented this from re-occurring, but it may just be difficult to reproduce.
 
 ## Acknowledgements
 Many thanks to the modders on the Owlcat Discord, but particularly microsoftenator2022, Kurufinve, and ADDB for helping to coach me through my ineptitude in order to get the mod working.
