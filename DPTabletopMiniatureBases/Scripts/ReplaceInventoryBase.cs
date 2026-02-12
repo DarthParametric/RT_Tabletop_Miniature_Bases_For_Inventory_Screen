@@ -68,8 +68,12 @@ namespace DPTabletopMiniatureBases
                 Logger = DPMod.Logger;
                 settings = DPMod.LoadData<Settings>();
 				LogDebug("Loaded mod settings");
-                DPMod.OnGUI += OnGUI;
-                IsEnabled = true;
+                
+				DPMod.OnGUI += OnGUI;
+				DPMod.OnShowGUI += OnShowGUI;
+				DPMod.OnHideGUI += OnHideGUI;
+                
+				IsEnabled = true;
 
                 Harmony harmony = new(DPMod.Manifest.UniqueName);
                 harmony.PatchAll();
@@ -79,6 +83,16 @@ namespace DPTabletopMiniatureBases
                 Logger.Log($"Caught an exception in EnterPoint: \n{ex}");
             }
         }
+
+		public static void OnShowGUI()
+		{
+			
+		}
+		
+		public static void OnHideGUI()
+		{
+			
+		}
 
         public static void OnGUI()
         {
