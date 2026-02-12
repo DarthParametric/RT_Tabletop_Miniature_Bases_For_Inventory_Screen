@@ -1,6 +1,8 @@
 # Tabletop Miniature Bases
 A mod for Owlcat's Rogue Trader cRPG. Replaces the flat holographic disc in the inventory and character creation screens with a classic tabletop-style miniature base.
 
+<p align="center"><img src="img/Header_alt.jpg?raw=true"/></p>
+
 ## Overview
 This mod adds a selection of tabletop-style miniature bases that replace the holographic disc that characters stand on in the inventory and character creation screens. Several different variants are provided, selectable via the mod manager. You can also optionally disable the green scanline VFX and floating servoskull in these screens.
 
