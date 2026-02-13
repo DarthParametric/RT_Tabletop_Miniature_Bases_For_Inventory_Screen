@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manifest:
     UniqueName: DPTabletopMiniatureBases
-    Version: 1.0
+    Version: 1.0.1
     DisplayName: Tabletop Miniature Bases For Inventory Screen
     Description: Replaces the flat holographic disc in the inventory and character
       creation screens with a classic tabletop-style miniature base.
