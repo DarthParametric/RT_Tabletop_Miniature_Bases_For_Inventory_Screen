@@ -44,6 +44,8 @@ You can configure the mod's settings via the Owlcat Mod Manager (Shift-F10 by de
 Your settings will be saved in a `DPTabletopMiniatureBases_Data.json` file in the Modifications folder. The settings apply universally across all saves.
 
 ## Known Issues
+The mod works when using a controller, but the in-game settings window is not available for the controller layout.
+
 Choosing the option to disable post-process effects will also disable the background image, leaving your character in a black void. This is unavoidable as they are all linked together in a single post-process object.
 
 The reflection probe in the scene does not capture dynamic objects (and trying to enable the option didn't work), so the character won't show up in any reflections on the glossy surfaces of the base. This is particularly apparent on the plain black base. The top surface looks kind of weird because of that.
