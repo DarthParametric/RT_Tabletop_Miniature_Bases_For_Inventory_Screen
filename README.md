@@ -39,7 +39,9 @@ If you have other mods, list them in quotes separated by commas. For example:
 You can move individual mods from the ActiveModifications section to the DisabledModifications section if you want to disable them without physically removing them.
 
 ## User Settings
-You can configure the mod's settings via the Owlcat Mod Manager (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Here you can enable or disable base swapping, choose the type of base you want to use, and whether you want to disable the post-process effects such as the green scanlines, the distortion effect, and the floating servoskull in the background. Once you have changed the settings to your desired values, hit the Apply button at the bottom to save them. 
+You can configure the mod's settings via the Owlcat Mod Manager (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Alternatively, you can also open the DLC and Mods Manager on the lefthand side of the main menu, switch to the Mods tab, and scroll down until you find the mod's entry. There you can click on the Settings icon to open the mod's settings window directly.
+
+Here you can enable or disable base swapping, choose the type of base you want to use, and whether you want to disable the post-process effects such as the green scanlines, the distortion effect, and the floating servoskull in the background. Once you have changed the settings to your desired values, hit the Apply button at the bottom to save them. 
 
 Your settings will be saved in a `DPTabletopMiniatureBases_Data.json` file in the Modifications folder. The settings apply universally across all saves.
 
