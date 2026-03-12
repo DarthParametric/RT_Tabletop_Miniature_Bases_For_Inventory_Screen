@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manifest:
     UniqueName: DPTabletopMiniatureBases
-    Version: 1.0.1
-    DisplayName: Tabletop Miniature Bases For Inventory Screen
+    Version: 1.0.2
+    DisplayName: Tabletop Miniature Bases
     Description: Replaces the flat holographic disc in the inventory and character
       creation screens with a classic tabletop-style miniature base.
     Author: DarthParametric
     Repository: https://github.com/DarthParametric/RT_Tabletop_Miniature_Bases_For_Inventory_Screen
-    HomePage: 
+    HomePage: https://www.nexusmods.com/warhammer40kroguetrader/mods/406
     Dependencies:
     - Name: MicroPatches
       Version: 1.20

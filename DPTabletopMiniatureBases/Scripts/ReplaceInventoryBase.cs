@@ -1,6 +1,9 @@
 using HarmonyLib;
 using Kingmaker.Blueprints;
 using Kingmaker.Code.UI.DollRoom;
+using Kingmaker.Localization;
+using Kingmaker.Localization.Enums;
+using Kingmaker.Localization.Shared;
 using Kingmaker.Modding;
 using Kingmaker.UI.DollRoom;
 using Owlcat.Runtime.Core.Logging;
@@ -8,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace DPTabletopMiniatureBases
 {
@@ -19,21 +23,17 @@ namespace DPTabletopMiniatureBases
         internal static string DPBaseName;
         internal static string DPBaseAssetID;
 		internal static int BaseDiameter;
-
+        private static string BaseType1;
+        private static string BaseType2;
+        private static string BaseType3;
+        private static string BaseType4;
+        private static string BaseType5;
+        private static string BaseType6;
+        private static string BaseType7;
+        private static string BaseType8;
+        private static string[] BaseTypes;
         public static bool IsEnabled;
         public static Settings settings;
-        
-		public static string[] BaseTypes =
-		{
-			"No Base",
-			"Glossy Black",
-			"Pseudo Flock",
-			"Diamondplate",
-			"Metal Tiles",
-			"Ceramic Tiles",
-			"Stylised Wood",
-			"Stylised Stone"
-		};
 
         internal static Dictionary<string, string> Base_IDs_10mm_Dict = new()
         {
@@ -106,25 +106,34 @@ namespace DPTabletopMiniatureBases
                 stylecentered.onNormal.textColor = Color.green;
                 stylecentered.hover.textColor = Color.yellow;
 				
-				GUILayout.Label("<b>Enable Character Base Swapping:</b>", GUILayout.ExpandWidth(false));
+				GUILayout.Label(ModString("DPTabletopMiniatureBases_ReplaceHeader"), GUILayout.ExpandWidth(false));
                 GUILayout.BeginHorizontal();
-                settings.ReplaceActive = GUILayout.Toggle(settings.ReplaceActive, "Replace Bases", styleleft);
+                settings.ReplaceActive = GUILayout.Toggle(settings.ReplaceActive, ModString("DPTabletopMiniatureBases_ReplaceLabel"), styleleft);
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
-
-
-				GUILayout.Label("<b>Choose Base Type:</b>", GUILayout.ExpandWidth(false));
+				
+                BaseType1 = ModString("DPTabletopMiniatureBases_BaseType1");
+                BaseType2 = ModString("DPTabletopMiniatureBases_BaseType2");
+                BaseType3 = ModString("DPTabletopMiniatureBases_BaseType3");
+				BaseType4 = ModString("DPTabletopMiniatureBases_BaseType4");
+				BaseType5 = ModString("DPTabletopMiniatureBases_BaseType5");
+				BaseType6 = ModString("DPTabletopMiniatureBases_BaseType6");
+				BaseType7 = ModString("DPTabletopMiniatureBases_BaseType7");
+				BaseType8 = ModString("DPTabletopMiniatureBases_BaseType8");
+                BaseTypes = new string[] { BaseType1, BaseType2, BaseType3, BaseType4, BaseType5, BaseType6, BaseType7, BaseType8 };
+				
+				GUILayout.Label(ModString("DPTabletopMiniatureBases_BaseHeader"), GUILayout.ExpandWidth(false));
 				GUILayout.BeginHorizontal();
 				settings.SelectedBaseType = GUILayout.SelectionGrid(settings.SelectedBaseType, BaseTypes, 8, stylecentered, GUILayout.ExpandWidth(false));
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
 
-                GUILayout.Label("<b>Disable Dollroom Post-Process Effects:</b>", GUILayout.ExpandWidth(false));
-                GUILayout.Label("(Removes scanlines, distortion, servoskull, and background image)", GUILayout.ExpandWidth(false));
+                GUILayout.Label(ModString("DPTabletopMiniatureBases_PPHeader"), GUILayout.ExpandWidth(false));
+                GUILayout.Label(ModString("DPTabletopMiniatureBases_PPSubhead"), GUILayout.ExpandWidth(false));
                 GUILayout.BeginHorizontal();
-                settings.PostProcessDisabled = GUILayout.Toggle(settings.PostProcessDisabled, "Disable Post-Process", styleleft);
+                settings.PostProcessDisabled = GUILayout.Toggle(settings.PostProcessDisabled, ModString("DPTabletopMiniatureBases_PPLabel"), styleleft);
                 GUILayout.EndHorizontal();
 
                 GUILayout.Space(15);
@@ -140,7 +149,7 @@ namespace DPTabletopMiniatureBases
                 GUILayout.Space(15);
 				*/
 
-                if (GUILayout.Button("Apply", GUILayout.ExpandWidth(false)))
+                if (GUILayout.Button(ModString("DPTabletopMiniatureBases_Apply"), GUILayout.ExpandWidth(false)))
                 {
                     DPMod.SaveData(settings);
 					LogDebug("Saved mod settings");
@@ -152,13 +161,18 @@ namespace DPTabletopMiniatureBases
             }
         }
 
-        public static void LogDebug(string message)
+        private static LocalizedString ModString(string key)
+        {
+            return new() { Key = key };
+        }
+		
+		public static void LogDebug(string message)
         {
             if (settings.DetailedLogging)
             {
                 Logger.Log($"DEBUG: {message}");
             }
-        }
+		}
 
         public static string GetBaseNameFromIndex(int index, int basesize)
         {

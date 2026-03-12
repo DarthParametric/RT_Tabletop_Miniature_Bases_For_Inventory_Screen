@@ -1,0 +1,49 @@
+{
+	"strings": {
+		"DPTabletopMiniatureBases_ReplaceHeader": {
+			"Text": "<b>Включить замену оснований:</b>"
+		},
+		"DPTabletopMiniatureBases_ReplaceLabel": {
+			"Text": "Заменить базы"
+		},
+		"DPTabletopMiniatureBases_BaseHeader": {
+			"Text": "<b>Выберите базовый тип:</b>"
+		},
+		"DPTabletopMiniatureBases_BaseType1": {
+			"Text": "Нет базы"
+		},
+		"DPTabletopMiniatureBases_BaseType2": {
+			"Text": "Глянцевый черный"
+		},
+		"DPTabletopMiniatureBases_BaseType3": {
+			"Text": "Псевдо Flock"
+		},
+		"DPTabletopMiniatureBases_BaseType4": {
+			"Text": "Алмазная пластина"
+		},
+		"DPTabletopMiniatureBases_BaseType5": {
+			"Text": "Металлическая Плитка"
+		},
+		"DPTabletopMiniatureBases_BaseType6": {
+			"Text": "Керамическая Плитка"
+		},
+		"DPTabletopMiniatureBases_BaseType7": {
+			"Text": "Стилизованный древесина"
+		},
+		"DPTabletopMiniatureBases_BaseType8": {
+			"Text": "Стилизованный Камень"
+		},
+		"DPTabletopMiniatureBases_PPHeader": {
+			"Text": "<b>Отключить постобработку эффектов в Dollroom:</b>"
+		},
+		"DPTabletopMiniatureBases_PPSubhead": {
+			"Text": "(Удаляет полосы развертки, искажения, сервочереп и фоновое изображение)"
+		},
+		"DPTabletopMiniatureBases_PPLabel": {
+			"Text": "Отключить постобработку"
+		},
+		"DPTabletopMiniatureBases_Apply": {
+			"Text": "Применить"
+		}
+	}
+}

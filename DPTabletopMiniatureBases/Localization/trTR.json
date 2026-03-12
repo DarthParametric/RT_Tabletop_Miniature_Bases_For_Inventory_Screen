@@ -1,49 +1,49 @@
 {
 	"strings": {
 		"DPTabletopMiniatureBases_ReplaceHeader": {
-			"Text": "<b>Enable Character Base Swapping:</b>"
+			"Text": "<b>Karakter Tabanı Değiştirmeyi Etkinleştir:</b>"
 		},
 		"DPTabletopMiniatureBases_ReplaceLabel": {
-			"Text": "Replace Bases"
+			"Text": "Tabanları Değiştir"
 		},
 		"DPTabletopMiniatureBases_BaseHeader": {
-			"Text": "<b>Choose Base Type:</b>"
+			"Text": "<b>Taban Tipini Seçin:</b>"
 		},
 		"DPTabletopMiniatureBases_BaseType1": {
-			"Text": "No Base"
+			"Text": "Taban Yok"
 		},
 		"DPTabletopMiniatureBases_BaseType2": {
-			"Text": "Glossy Black"
+			"Text": "Parlak Siyah"
 		},
 		"DPTabletopMiniatureBases_BaseType3": {
-			"Text": "Pseudo Flock"
+			"Text": "Sahte Flock"
 		},
 		"DPTabletopMiniatureBases_BaseType4": {
-			"Text": "Diamondplate"
+			"Text": "Elmas Plaka"
 		},
 		"DPTabletopMiniatureBases_BaseType5": {
-			"Text": "Metal Tiles"
+			"Text": "Metal Fayans"
 		},
 		"DPTabletopMiniatureBases_BaseType6": {
-			"Text": "Ceramic Tiles"
+			"Text": "Seramik Fayans"
 		},
 		"DPTabletopMiniatureBases_BaseType7": {
-			"Text": "Stylised Wood"
+			"Text": "Stilize Ahşap"
 		},
 		"DPTabletopMiniatureBases_BaseType8": {
-			"Text": "Stylised Stone"
+			"Text": "Stilize Taş"
 		},
 		"DPTabletopMiniatureBases_PPHeader": {
-			"Text": "<b>Disable Dollroom Post-Process Effects:</b>"
+			"Text": "<b>Oyuncak bebek odası İşlem Sonrası efektlerini devre dışı bırak:</b>"
 		},
 		"DPTabletopMiniatureBases_PPSubhead": {
-			"Text": "(Removes scanlines, distortion, servoskull, and background image)"
+			"Text": "(Tarama çizgilerini, bozulmaları, servo kafatasını ve arka plan görüntüsünü kaldırır)"
 		},
 		"DPTabletopMiniatureBases_PPLabel": {
-			"Text": "Disable Post-Process"
+			"Text": "İşlem Sonrası İşlemi Devre Dışı Bırak"
 		},
 		"DPTabletopMiniatureBases_Apply": {
-			"Text": "Apply"
+			"Text": "Uygulamak"
 		}
 	}
 }

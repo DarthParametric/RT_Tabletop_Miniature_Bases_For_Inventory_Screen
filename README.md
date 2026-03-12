@@ -39,7 +39,7 @@ If you have other mods, list them in quotes separated by commas. For example:
 You can move individual mods from the ActiveModifications section to the DisabledModifications section if you want to disable them without physically removing them.
 
 ## User Settings
-You can configure the mod's settings via the Owlcat Mod Manager (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Alternatively, you can also open the DLC and Mods Manager on the lefthand side of the main menu, switch to the Mods tab, and scroll down until you find the mod's entry. There you can click on the Settings icon to open the mod's settings window directly.
+You can configure the mod's settings via the [Owlcat Mod Manager](img/OMM_Settings_Screen.jpg) (Shift-F10 by default). Click on the Settings button next to the mod's name in the list, which will open its settings page. Alternatively, you can also open the [DLC and Mods Manager](img/DLC_Manager_Settings.jpg) on the lefthand side of the main menu, switch to the Mods tab, and scroll down until you find the mod's entry. There you can click on the Settings icon to open the mod's settings window directly.
 
 Here you can enable or disable base swapping, choose the type of base you want to use, and whether you want to disable the post-process effects such as the green scanlines, the distortion effect, and the floating servoskull in the background. Once you have changed the settings to your desired values, hit the Apply button at the bottom to save them. 
 
@@ -53,6 +53,8 @@ Choosing the option to disable post-process effects will also disable the backgr
 The reflection probe in the scene does not capture dynamic objects (and trying to enable the option didn't work), so the character won't show up in any reflections on the glossy surfaces of the base. This is particularly apparent on the plain black base. The top surface looks kind of weird because of that.
 
 Larger characters, such as Ulfar and Glaito, automatically switch to using a larger diameter base. On rare occasions, equipping a weapon may cause the base to switch to the smaller one. I _think_ I have prevented this from re-occurring, but it may just be difficult to reproduce.
+
+Machine translations for the config screen text have been added. If anyone is willing to provide proper translations, let me know.
 
 ## Acknowledgements
 Many thanks to the modders on the Owlcat Discord, but particularly microsoftenator2022, Kurufinve, and ADDB for helping to coach me through my ineptitude in order to get the mod working.

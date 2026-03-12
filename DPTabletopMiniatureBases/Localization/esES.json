@@ -1,49 +1,49 @@
 {
 	"strings": {
 		"DPTabletopMiniatureBases_ReplaceHeader": {
-			"Text": "<b>Enable Character Base Swapping:</b>"
+			"Text": "<b>Habilitar el Intercambio de Bases de Caracteres:</b>"
 		},
 		"DPTabletopMiniatureBases_ReplaceLabel": {
-			"Text": "Replace Bases"
+			"Text": "Reemplazar Bases"
 		},
 		"DPTabletopMiniatureBases_BaseHeader": {
-			"Text": "<b>Choose Base Type:</b>"
+			"Text": "<b>Elija el Tipo de Base:</b>"
 		},
 		"DPTabletopMiniatureBases_BaseType1": {
-			"Text": "No Base"
+			"Text": "Sin Base"
 		},
 		"DPTabletopMiniatureBases_BaseType2": {
-			"Text": "Glossy Black"
+			"Text": "Negro Brillante"
 		},
 		"DPTabletopMiniatureBases_BaseType3": {
-			"Text": "Pseudo Flock"
+			"Text": "Seudo Flock"
 		},
 		"DPTabletopMiniatureBases_BaseType4": {
-			"Text": "Diamondplate"
+			"Text": "Placa de Diamante"
 		},
 		"DPTabletopMiniatureBases_BaseType5": {
-			"Text": "Metal Tiles"
+			"Text": "Azulejos Metálicos"
 		},
 		"DPTabletopMiniatureBases_BaseType6": {
-			"Text": "Ceramic Tiles"
+			"Text": "Baldosas de Cerámica"
 		},
 		"DPTabletopMiniatureBases_BaseType7": {
-			"Text": "Stylised Wood"
+			"Text": "Madera Estilizada"
 		},
 		"DPTabletopMiniatureBases_BaseType8": {
-			"Text": "Stylised Stone"
+			"Text": "Piedra Estilizada"
 		},
 		"DPTabletopMiniatureBases_PPHeader": {
-			"Text": "<b>Disable Dollroom Post-Process Effects:</b>"
+			"Text": "<b>Desactivar los Efectos de Posprocesamiento de Dollroom:</b>"
 		},
 		"DPTabletopMiniatureBases_PPSubhead": {
-			"Text": "(Removes scanlines, distortion, servoskull, and background image)"
+			"Text": "(Elimina líneas de escaneo, distorsión, servoskull e imagen de fondo)"
 		},
 		"DPTabletopMiniatureBases_PPLabel": {
-			"Text": "Disable Post-Process"
+			"Text": "Deshabilitar Posproceso"
 		},
 		"DPTabletopMiniatureBases_Apply": {
-			"Text": "Apply"
+			"Text": "Aplicar"
 		}
 	}
 }

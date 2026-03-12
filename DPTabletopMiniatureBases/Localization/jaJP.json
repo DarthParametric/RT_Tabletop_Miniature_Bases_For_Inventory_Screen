@@ -1,49 +1,49 @@
 {
 	"strings": {
 		"DPTabletopMiniatureBases_ReplaceHeader": {
-			"Text": "<b>Enable Character Base Swapping:</b>"
+			"Text": "<b>キャラクターベースのスワップを有効にする:</b>"
 		},
 		"DPTabletopMiniatureBases_ReplaceLabel": {
-			"Text": "Replace Bases"
+			"Text": "交換するベース"
 		},
 		"DPTabletopMiniatureBases_BaseHeader": {
-			"Text": "<b>Choose Base Type:</b>"
+			"Text": "<b>ベースタイプを選択し:</b>"
 		},
 		"DPTabletopMiniatureBases_BaseType1": {
-			"Text": "No Base"
+			"Text": "ベースなし"
 		},
 		"DPTabletopMiniatureBases_BaseType2": {
-			"Text": "Glossy Black"
+			"Text": "グロッシーブラック"
 		},
 		"DPTabletopMiniatureBases_BaseType3": {
-			"Text": "Pseudo Flock"
+			"Text": "擬似フロック"
 		},
 		"DPTabletopMiniatureBases_BaseType4": {
-			"Text": "Diamondplate"
+			"Text": "ダイヤモンドプレート"
 		},
 		"DPTabletopMiniatureBases_BaseType5": {
-			"Text": "Metal Tiles"
+			"Text": "金属タイル"
 		},
 		"DPTabletopMiniatureBases_BaseType6": {
-			"Text": "Ceramic Tiles"
+			"Text": "セラミックタイル"
 		},
 		"DPTabletopMiniatureBases_BaseType7": {
-			"Text": "Stylised Wood"
+			"Text": "様式化された木材"
 		},
 		"DPTabletopMiniatureBases_BaseType8": {
-			"Text": "Stylised Stone"
+			"Text": "様式化された石"
 		},
 		"DPTabletopMiniatureBases_PPHeader": {
-			"Text": "<b>Disable Dollroom Post-Process Effects:</b>"
+			"Text": "<b>ドールルーム のポストプロセス効果を無効にする:</b>"
 		},
 		"DPTabletopMiniatureBases_PPSubhead": {
-			"Text": "(Removes scanlines, distortion, servoskull, and background image)"
+			"Text": "(スキャンライン、歪み、サーボスカル、背景画像を削除します)"
 		},
 		"DPTabletopMiniatureBases_PPLabel": {
-			"Text": "Disable Post-Process"
+			"Text": "後処理を無効にする"
 		},
 		"DPTabletopMiniatureBases_Apply": {
-			"Text": "Apply"
+			"Text": "適用する"
 		}
 	}
 }

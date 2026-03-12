@@ -1,49 +1,49 @@
 {
 	"strings": {
 		"DPTabletopMiniatureBases_ReplaceHeader": {
-			"Text": "<b>Enable Character Base Swapping:</b>"
+			"Text": "<b>Activer L'échange de Base de Caractères:</b>"
 		},
 		"DPTabletopMiniatureBases_ReplaceLabel": {
-			"Text": "Replace Bases"
+			"Text": "Remplacer les Bases"
 		},
 		"DPTabletopMiniatureBases_BaseHeader": {
-			"Text": "<b>Choose Base Type:</b>"
+			"Text": "<b>Choisissez le type de Base:</b>"
 		},
 		"DPTabletopMiniatureBases_BaseType1": {
-			"Text": "No Base"
+			"Text": "Pas de Base"
 		},
 		"DPTabletopMiniatureBases_BaseType2": {
-			"Text": "Glossy Black"
+			"Text": "Noir Brillant"
 		},
 		"DPTabletopMiniatureBases_BaseType3": {
 			"Text": "Pseudo Flock"
 		},
 		"DPTabletopMiniatureBases_BaseType4": {
-			"Text": "Diamondplate"
+			"Text": "Plaque de Diamant"
 		},
 		"DPTabletopMiniatureBases_BaseType5": {
-			"Text": "Metal Tiles"
+			"Text": "Tuiles Métalliques"
 		},
 		"DPTabletopMiniatureBases_BaseType6": {
-			"Text": "Ceramic Tiles"
+			"Text": "Tuiles Céramique"
 		},
 		"DPTabletopMiniatureBases_BaseType7": {
-			"Text": "Stylised Wood"
+			"Text": "Bois Stylisé"
 		},
 		"DPTabletopMiniatureBases_BaseType8": {
-			"Text": "Stylised Stone"
+			"Text": "Pierre Stylisée"
 		},
 		"DPTabletopMiniatureBases_PPHeader": {
-			"Text": "<b>Disable Dollroom Post-Process Effects:</b>"
+			"Text": "<b>Désactiver les Effets de Post-Traitement de Dollroom:</b>"
 		},
 		"DPTabletopMiniatureBases_PPSubhead": {
-			"Text": "(Removes scanlines, distortion, servoskull, and background image)"
+			"Text": "(Supprime les lignes de balayage, la distorsion, le servocrâne et l'image d'arrière-plan)"
 		},
 		"DPTabletopMiniatureBases_PPLabel": {
-			"Text": "Disable Post-Process"
+			"Text": "Désactiver le Post-Traitement"
 		},
 		"DPTabletopMiniatureBases_Apply": {
-			"Text": "Apply"
+			"Text": "Appliquer"
 		}
 	}
 }
