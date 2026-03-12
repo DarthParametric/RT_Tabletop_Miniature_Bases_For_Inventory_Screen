@@ -58,3 +58,5 @@ Machine translations for the config screen text have been added. If anyone is wi
 
 ## Acknowledgements
 Many thanks to the modders on the Owlcat Discord, but particularly microsoftenator2022, Kurufinve, and ADDB for helping to coach me through my ineptitude in order to get the mod working.
+
+Thanks to Kurufinve for providing improvements to the Russian translation.
