@@ -1,40 +1,40 @@
 {
 	"strings": {
 		"DPTabletopMiniatureBases_ReplaceHeader": {
-			"Text": "<b>Включить замену оснований:</b>"
+			"Text": "<b>Замена подставок фигурок:</b>"
 		},
 		"DPTabletopMiniatureBases_ReplaceLabel": {
-			"Text": "Заменить базы"
+			"Text": "Включено"
 		},
 		"DPTabletopMiniatureBases_BaseHeader": {
-			"Text": "<b>Выберите базовый тип:</b>"
+			"Text": "<b>Выберите материал основания:</b>"
 		},
 		"DPTabletopMiniatureBases_BaseType1": {
-			"Text": "Нет базы"
+			"Text": "Без подставки"
 		},
 		"DPTabletopMiniatureBases_BaseType2": {
 			"Text": "Глянцевый черный"
 		},
 		"DPTabletopMiniatureBases_BaseType3": {
-			"Text": "Псевдо Flock"
+			"Text": "Искусственная трава"
 		},
 		"DPTabletopMiniatureBases_BaseType4": {
 			"Text": "Алмазная пластина"
 		},
 		"DPTabletopMiniatureBases_BaseType5": {
-			"Text": "Металлическая Плитка"
+			"Text": "Металлическая плитка"
 		},
 		"DPTabletopMiniatureBases_BaseType6": {
 			"Text": "Керамическая Плитка"
 		},
 		"DPTabletopMiniatureBases_BaseType7": {
-			"Text": "Стилизованный древесина"
+			"Text": "Стилизованная древесина"
 		},
 		"DPTabletopMiniatureBases_BaseType8": {
 			"Text": "Стилизованный Камень"
 		},
 		"DPTabletopMiniatureBases_PPHeader": {
-			"Text": "<b>Отключить постобработку эффектов в Dollroom:</b>"
+			"Text": "<b>Отключить визуальные эффекты постобработки на экране персонажа:</b>"
 		},
 		"DPTabletopMiniatureBases_PPSubhead": {
 			"Text": "(Удаляет полосы развертки, искажения, сервочереп и фоновое изображение)"
